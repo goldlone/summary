@@ -798,7 +798,7 @@ class A {
 ![](./assets/map.png)
 
 * `TreeMap`：基于红黑树实现。
-* `HashMap`：基于哈希表实现。
+* `HashMap`：基于哈希表实现，使用链表法解决冲突。
 * `HashTable`：和 HashMap 类似，但它是线程安全的，这意味着同一时刻多个线程可以同时写入 HashTable 并且不会导致数据不一致。它是遗留类，不应该去使用它。现在可以使用 ConcurrentHashMap 来支持线程安全，并且 ConcurrentHashMap 的效率会更高，因为 ConcurrentHashMap 引入了分段锁。
 * `LinkedHashMap`：使用双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用（LRU）顺序。
 * `WeakHashMap`：主要用来实现缓存，通过使用 WeakHashMap 来引用缓存对象，由 JVM 对这部分缓存进行回收
@@ -1544,9 +1544,12 @@ public static void main(String[] args) throws IOException {
 
 ## 十六、并发
 ### 16.1 线程状态转换
+
+JDK，Thread中 `enum State`声明了6中线程状态。
+
 ![](./assets/线程状态装换图.png)
 
-**新建**
+**新建（New）**
 创建后尚未启动。
 
 **可运行（Runnable）**
@@ -1580,7 +1583,7 @@ public static void main(String[] args) throws IOException {
 |进入方法|退出方法|
 |:-|:-|
 |Thread.sleep() 方法|时间结束|
-|设置了 Timeout 参数的 Object.wait() 方法|时间结束 / Object.notify() / Object.notifyAll()
+|设置了 Timeout 参数的 Object.wait() 方法|时间结束 / Object.notify() / Object.notifyAll()|
 |设置了 Timeout 参数的 Thread.join() 方法|时间结束 / 被调用的线程执行完毕|
 |LockSupport.parkNanos() 方法|-|
 |LockSupport.parkUntil() 方法|-|
