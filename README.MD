@@ -16,7 +16,7 @@
 * 存储
   - [x] ![](assets/HDFS.png) HDFS
   - [ ] ![](assets/hbase.png) HBase
-  - [ ] ![](assets/zookeeper.png) Zookeeper
+  - [ ] ![](assets/Zookeeper.png) Zookeeper
   - [ ] ![](assets/Elasticsearch.png) ElasticSearch
   - [ ] ![](assets/Kafka.png) Kafka
   - [ ] ![](assets/apache_kylin.png) Kylin
